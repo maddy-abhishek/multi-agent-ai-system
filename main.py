@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from agents.agentic_workflow import GraphBuilder
 from starlette.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from langchain_core.messages import HumanMessage
 import os
 from dotenv import load_dotenv
 from pydantic import BaseModel
@@ -34,8 +35,8 @@ async def query_agent(query:QueryRequest):
 
         print(f"Graph saved as 'my_graph.png' in {os.getcwd()}")
         # Assuming request is a pydantic object like: {"question": "your text"}
-        messages={"messages": [query.question]}
-        output = agent_app.invoke(messages)
+        messages= {"messages": [HumanMessage(content=query.question)]}
+        output = await agent_app.ainvoke(messages)
 
         # If result is dict with messages:
         if isinstance(output, dict) and "messages" in output:

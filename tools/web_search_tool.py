@@ -17,8 +17,8 @@ class WebSearchTool:
         def search_web(query:str, max_results: int = 2) -> str:
             """Search the web for a query"""
             try:
-                tavily_search = TavilySearchResults(self.api_key)
-                search_result = tavily_search.search(query, max_results=max_results)
+                tavily_search = TavilySearchResults(api_key=self.api_key, max_results=max_results)
+                search_result = tavily_search.invoke(query)
                 return f"Following are the search results for the query '{query}': {search_result}"
             except Exception as e:
                 return f"Web search cannot be performed due to {e}."
