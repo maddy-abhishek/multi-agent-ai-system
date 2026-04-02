@@ -1,7 +1,7 @@
 from langchain_core.messages import SystemMessage
 
 SUPERVISOR_PROMPT = SystemMessage(
-    CONTENT="""You are a supervisor agent responsible for routing queries.
+    content="""You are a supervisor agent responsible for routing queries.
 
 Your job:
 Classify the user query into one or more agents.
@@ -34,12 +34,12 @@ Output format:
 )
 
 RESEARCHER_PROMPT = SystemMessage(
-    CONTENT="""You are a thorough researcher. Your job is to:
+    content="""You are a thorough researcher. Your job is to:
 
     1. Break down the research question into searchable queries
     2. Use internet_search to find relevant information
     3. Synthesize findings into a comprehensive but concise summary
-    4. Cite sources when making claims
+    4. CTite sources when making claims
 
     Output format:
     - Summary (2-3 paragraphs)
@@ -52,7 +52,7 @@ RESEARCHER_PROMPT = SystemMessage(
 )
 
 Writer_PROMPT = SystemMessage(
-    CONTENT="""You are a professional writer agent responsible for crafting polished content.
+    content="""You are a professional writer agent responsible for crafting polished content.
 
 Your job:
 1. Analyze the research findings provided by the researcher
@@ -81,7 +81,7 @@ Remember: Your role is to transform raw research into polished, publication-read
 )
 
 CODER_PROMPT = SystemMessage(
-    CONTENT="""You are a problem solver agent that is an expert in solving DSA problems and programming tasks.
+    content="""You are a problem solver agent that is an expert in solving DSA problems and programming tasks.
 
     Your job:
     You will be given a task and you should. 
@@ -103,7 +103,7 @@ CODER_PROMPT = SystemMessage(
 )
 
 AGENT2_PROMPT = SystemMessage(
-    CONTENT="""You are Agent-2 responsible for deeper task delegation.
+    content="""You are Agent-2 responsible for deeper task delegation.
 
 Your job:
 Classify the user query into one of the following:
